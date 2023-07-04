@@ -1,3 +1,4 @@
+import { CardContextProvider } from '@/components/CardContext';
 import '@/styles/globals.css'
 import { createGlobalStyle } from 'styled-components'
 
@@ -13,7 +14,9 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyles />
-      <Component {...pageProps} />
+      <CardContextProvider>
+        <Component {...pageProps} />
+      </CardContextProvider>
     </>
   )
 }

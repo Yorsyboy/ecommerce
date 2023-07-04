@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Button from "./Button";
 import Link from "next/link";
+import { useContext } from "react";
+import { CartContext } from "./CardContext";
 
 const ProductWrapper = styled.div``;
 
@@ -45,6 +47,7 @@ const Price = styled.div`
 
 export default function ProductBox({ _id, title, description, images, price }) {
     const url = "/products/" + _id;
+    const {addProductToCart} = useContext(CartContext);
   return (
     <ProductWrapper>
       <Box href={url}>
@@ -56,7 +59,9 @@ export default function ProductBox({ _id, title, description, images, price }) {
         <Title href={url}>{title}</Title>
         <PriceRow>
           <Price>${price}</Price>
-          <Button primary outline>
+          <Button 
+          onClick={() => addProductToCart(_id)}
+          primary outline>
             Add to cart
           </Button>
         </PriceRow>
