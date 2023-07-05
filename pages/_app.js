@@ -1,5 +1,22 @@
+import { CardContextProvider } from '@/components/CardContext';
 import '@/styles/globals.css'
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyles = createGlobalStyle`
+  body{
+    padding: 0;
+    margin: 0;
+    background-color: #eee;
+  }
+`;
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <GlobalStyles />
+      <CardContextProvider>
+        <Component {...pageProps} />
+      </CardContextProvider>
+    </>
+  )
 }
